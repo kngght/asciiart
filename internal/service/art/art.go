@@ -144,7 +144,7 @@ func MakeASCIIArt(path string, wdt int) {
 	file, err := os.Open(path)
 	mayBeErr(err)
 	defer closeFile(file)
-	_, format, err := image.Decode(file)
+	_, format, err := image.DecodeConfig(file)
 	mayBeErr(err)
 
 	// Сброс позиции файла в начало
