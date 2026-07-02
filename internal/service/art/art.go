@@ -21,10 +21,6 @@ import (
 
 const chars = ` .-':_,^=;><+!rc*/z?sLTv)J7(|Fi{C}fI31tlu[neoZ5Yxjya]2ESwqkP6h9d4VpOGbUAKXHm8RD#$Bg0MNWQ%&@`
 
-type art interface {
-	AsciiArt()
-}
-
 func makeCharImg(img image.Image, wdt int) string {
 	dst := toScale(img, wdt)
 	var asciiArt strings.Builder
@@ -124,7 +120,7 @@ func giffing(g *gif.GIF, wdt int) *charGif {
 
 		var savedCarvas *image.RGBA
 		if disposal == gif.DisposalPrevious {
-			savedCarvas := image.NewRGBA(canvas.Rect)
+			savedCarvas = image.NewRGBA(canvas.Rect)
 			draw.Draw(savedCarvas, savedCarvas.Rect, canvas, canvas.Rect.Min, draw.Src)
 		}
 		draw.Draw(canvas, frame.Bounds(), frame, frame.Rect.Min, draw.Over)
